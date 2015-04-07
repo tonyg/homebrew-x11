@@ -12,6 +12,14 @@ class Xpdf < Formula
   conflicts_with "pdf2image", "poppler",
     :because => "xpdf, pdf2image, and poppler install conflicting executables"
 
+  # see: http://gnats.netbsd.org/45562
+  def patches
+    [
+     DATA,
+     "http://www.eighty-twenty.org/files/xpdf-3.03-protection.patch"
+    ]
+  end
+
   def install
     freetype = Formula["freetype"]
     lesstif = Formula["lesstif"]
